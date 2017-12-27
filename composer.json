@@ -3,6 +3,8 @@
     "type": "library",
     "description": "This project is to help php programmers have an easy time coding by having ready made functions for common and vital php operations",
     "homepage": "https://github.com/Akintunde102/chocolate-php",
+    "keywords": ["fancyurl", "vital functions", "package"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Akintunde Jegede",
@@ -16,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "akintunde102\\chocolatephp\\": "src"
+            "akintunde102\\chocolatephp\\": "src/"
         }
     }
 }
