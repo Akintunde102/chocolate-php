@@ -2,10 +2,7 @@
 namespace akintunde102\chocolatephp;
 
 /** Mail Sending Class
-*** This class makes it really  easy to send emails from your server, most especially when you want to have control of all the email fields. To use *** this class,please follow my directions. You need two supporting classes which are Courier.class and Email.class which are listed below.
-***
-** These functions help you to encrypt and decrypt a string using your own secret key and salt . It  does not require the installation of openssl.
-**  
+*** This class makes it really  easy to send emails from your server, most especially when you want to have control of all the email fields.
 ** Author : Jegede Akintunde
 ** Email : jegedeakintunde@gmail.com
 ** Steemit: @akintunde 
