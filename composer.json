@@ -1,5 +1,5 @@
 {
-    "name": "Akintunde102/chocolate-php",
+    "name": "akintunde102/chocolatephp",
     "type": "library",
     "description": "This project is to help php programmers have an easy time coding by having ready made functions for common and vital php operations",
     "homepage": "https://github.com/Akintunde102/chocolate-php",
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "chocolate-php": "src"
+            "akintunde102\\chocolatephp\\": "src"
         }
     }
 }
