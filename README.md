@@ -26,7 +26,6 @@ $mth can either be 'up' and 'down', 'up' is when its word to url, 'down' is from
 
 
 #### ossl_encrypt($string) , ossl_decrypt($string)
-
 These functions help you to encrypt and decrypt a string using your own secret key . It  will require that you have the openssl php extension     **  installed 
 $string refers to the string to be encrypted or decrypted
 
@@ -34,11 +33,18 @@ $string refers to the string to be encrypted or decrypted
 These functions help you to encrypt and decrypt a string using your own secret key . It  does not require that you have the openssl php extension     **  installed
 $string refers to the string to be encrypted or decrypted
 
+#### InitiateDownload($file,$ext)
+This is to initiate a direct download 
+$file is the name of the file to be downloaded with the full path (e.g. 'image/popup.jpg')
+$ext is the name of the file extension e.g. 'jpg'
 
+#### removehtml($in)
+This is to remove html tags from a string , most especially when using sql dumps
+$in represents the file input
+Most sql dumps comes with minimal htmltags in the database for formatting reasons
+This funtion helps remove them so as to add own format
+This is also useful when using the text to image fucntion to avoid html tags showing up in the pictures
 
-#### fancy_date($timestamp)
-This function is used to convert UNIX timestamp to very nice social network-type time format e.g. "5 minutes ago"  "an hour ago"
-$timestamp refers to a unix timestamp
 
 
 #### Courier Class
