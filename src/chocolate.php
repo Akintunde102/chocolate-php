@@ -29,6 +29,20 @@ class chocolate{
           }
          return $retval;
      }
+	 
+	/** 
+*** This is to initiate a direct download 
+*** $file is the name of the file to be downloaded with the full path (e.g. 'image/popup.jpg')
+**  $ext is the name of the file extension e.g. 'jpg'
+**
+*/	 
+	 
+	 Public Function InitiateDownload($file,$ext){
+$fp = fopen($file, "r");
+header("Content-Type:application/$ext");
+	header("Content-Disposition:attachment;
+	filename=$file");
+	fpassthru($fp);}
 	
 	
 	
