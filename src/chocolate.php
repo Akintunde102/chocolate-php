@@ -93,7 +93,7 @@ return $in;
 	$text = $this->removehtml($text);
 	if (strlen($text) > 400){
 		
-		$text = $this->shorten_by_paragraph($text,400) }
+		$text = $this->shorten_by_paragraph($text,400); }
 		$text = htmlspecialchars($text.'....
 [SHORTENED]'); 
 }
