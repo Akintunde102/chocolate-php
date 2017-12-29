@@ -1,6 +1,6 @@
 <?php
 namespace akintunde102\chocolatephp;
-use SimpleImage;
+use claviska\SimpleImage;
 
 class chocolate{
 	
@@ -8,7 +8,7 @@ class chocolate{
 	
 	 public function __construct()
     {
-        $this->imgconv = new SimpleImage();
+        $this->imgconv = $this->SimpleImage();
     }
 	
 	/** 

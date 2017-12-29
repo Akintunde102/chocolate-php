@@ -13,7 +13,7 @@
  * @package SimpleImage
  *
  */
-class simpleimage {
+class SimpleImage {
 
     /**
      * @var int Default output image quality
