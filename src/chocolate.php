@@ -45,6 +45,35 @@ header("Content-Type:application/$ext");
 	fpassthru($fp);}
 	
 	
+	/** 
+*** This is to remove html tags from a string , most especially when using sql dumps
+** $in represents the file input
+** Most sql dumps comes with minimal htmltags in the database for formatting reasons
+*** This funtion helps remove them so as to add own format
+*/	 	
+	
+	Public Function removehtml($in){
+		
+	$in = str_replace('<u>','',$in);
+	$in = str_replace('</u>','',$in);
+	$in = str_replace('<strong>','',$in);
+	$in = str_replace('</strong>','',$in);
+	$in = str_replace('<em>','',$in);
+	$in = str_replace('</em>','',$in);
+	$in = str_replace('&nbsp;',' ',$in);
+	$in = str_replace('&amp;','&',$in);
+	$in = str_replace('#','',$in);
+	
+	$in = str_replace('<br />','
+',$in);
+   $in = str_replace('<br>','
+   
+',$in);
+
+return $in;	
+		
+	}
+	
 	
 /* This can check if a word is present in a block of text, I use it to auto-tag articles by checking the articles against some words
 **  
