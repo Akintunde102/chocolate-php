@@ -1,8 +1,15 @@
 <?php
 namespace akintunde102\chocolatephp;
+use akintunde102\chocolatephp\SimpleImage;
 
 class chocolate{
 	
+	
+	
+	 public function __construct()
+    {
+        $this->imgconv = new SimpleImage();
+    }
 	
 	/** 
 *** This reduces the number of words in a string
@@ -135,8 +142,7 @@ $text = html_entity_decode($text)
 $uniqueHash = session_id().strtotime(date("Y-m-d H:i:s"));
 $sbp = dirname(__FILE__);
 
-$image = new SimpleImage();
-$this->imgconv = $image;
+
 
   //This line automatically creates Processing Folder incase it doesn't exist
 if (!is_dir($processFolder)) {
