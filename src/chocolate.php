@@ -1,6 +1,6 @@
 <?php
 namespace akintunde102\chocolatephp;
-use akintunde102\chocolatephp\SimpleImage;
+use SimpleImage;
 
 class chocolate{
 	
