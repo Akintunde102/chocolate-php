@@ -3,13 +3,6 @@ namespace akintunde102\chocolatephp;
 
 class chocolate{
 	
-	
-	
-	 public function __construct()
-    {
-        $this->imgconv = $this->SimpleImage();
-    }
-	
 	/** 
 *** This reduces the number of words in a string
 **  
