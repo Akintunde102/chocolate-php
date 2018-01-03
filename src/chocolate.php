@@ -10,8 +10,6 @@ class chocolate{
 **
 **
 */
-	
-	
 		
    Public function shorten_words($string, $wordsreturned)
 	{
@@ -28,6 +26,9 @@ class chocolate{
           }
          return $retval;
      }
+	 
+	 
+	 
 	 
 	/** 
 *** This is to initiate a direct download 
@@ -288,6 +289,212 @@ Public function fancy_date($timestamp)
 		return $value.' ago ';
 	}
 	
+
+
+
+Public function checkPHP($ret='php',$target_file = 'php.html'){
+ 
+    ob_start();
+    phpinfo();
+    $info = ob_get_contents();
+    ob_end_clean();
+ 
+    $fp = fopen($target_file, "w+");
+    fwrite($fp, $info);
+    fclose($fp);
+	
+	if (!empty($ret)){return '<a href="'.$target_file.'">'.$ret.'</a>';}
+	
+	
+}
+
+
+Public function checkDomain($domain){
+ 
+    // fix the domain name:
+    $domain = strtolower(trim($domain));
+    $domain = preg_replace('/^http:\/\//i', '', $domain);
+    $domain = preg_replace('/^www\./i', '', $domain);
+    $domain = explode('/', $domain);
+    $domain = trim($domain[0]);
+ 
+    // split the TLD from domain name
+    $_domain = explode('.', $domain);
+    $lst = count($_domain)-1;
+    $ext = $_domain[$lst];
+ 
+    // You find resources and lists 
+    // like these on wikipedia: 
+    //
+    // http://de.wikipedia.org/wiki/Whois
+    //
+    $servers = array(
+        "biz" => "whois.neulevel.biz",
+        "com" => "whois.internic.net",
+        "us" => "whois.nic.us",
+        "coop" => "whois.nic.coop",
+        "info" => "whois.nic.info",
+        "name" => "whois.nic.name",
+        "net" => "whois.internic.net",
+        "gov" => "whois.nic.gov",
+        "edu" => "whois.internic.net",
+        "mil" => "rs.internic.net",
+        "int" => "whois.iana.org",
+        "ac" => "whois.nic.ac",
+        "ae" => "whois.uaenic.ae",
+        "at" => "whois.ripe.net",
+        "au" => "whois.aunic.net",
+        "be" => "whois.dns.be",
+        "bg" => "whois.ripe.net",
+        "br" => "whois.registro.br",
+        "bz" => "whois.belizenic.bz",
+        "ca" => "whois.cira.ca",
+        "cc" => "whois.nic.cc",
+        "ch" => "whois.nic.ch",
+        "cl" => "whois.nic.cl",
+        "cn" => "whois.cnnic.net.cn",
+        "cz" => "whois.nic.cz",
+        "de" => "whois.nic.de",
+        "fr" => "whois.nic.fr",
+        "hu" => "whois.nic.hu",
+        "ie" => "whois.domainregistry.ie",
+        "il" => "whois.isoc.org.il",
+        "in" => "whois.ncst.ernet.in",
+        "ir" => "whois.nic.ir",
+        "mc" => "whois.ripe.net",
+        "to" => "whois.tonic.to",
+        "tv" => "whois.tv",
+        "ru" => "whois.ripn.net",
+        "org" => "whois.pir.org",
+        "aero" => "whois.information.aero",
+        "nl" => "whois.domain-registry.nl"
+    );
+ 
+    if (!isset($servers[$ext])){
+        die('Error: No matching nic server found!');
+    }
+ 
+    $nic_server = $servers[$ext];
+ 
+    $output = '';
+ 
+    // connect to whois server:
+    if ($conn = fsockopen ($nic_server, 43)) {
+        fputs($conn, $domain."\r\n");
+        while(!feof($conn)) {
+            $output .= fgets($conn,128);
+        }
+        fclose($conn);
+    }
+    else { die('Error: Could not connect to ' . $nic_server . '!'); }
+ 
+ 
+ob_start();
+    echo nl2br($output);
+    $info = ob_get_contents();
+    ob_end_clean();
+ 
+    $fp = fopen($domain.'.html', "w+");
+    fwrite($fp, $info);
+    fclose($fp);
+	return '<a href="'.$domain.'.html">'.$domain.'</a>';
+	
+}
+
+
+
+Public function dirSize($dir,$unformatted=0) {
+$size = 0;
+
+if (is_dir($dir)) {
+	
+$objects = scandir($dir);
+
+
+foreach ($objects as $object){
+if ($object != "." && $object != ".." && $object != 'index.php')
+if (filetype($dir."/".$object) == "dir")
+$size += $this->dirsize($dir."/".$object,1);
+else
+$size += filesize($dir."/".$object);
+reset($objects);
+}
+
+
+if ($unformatted == 0){return $this->human_filesize($size);}
+else {return $size;}
+
+}
+else{return 'directory not found';}
+
+}
+
+
+Public function human_filesize($bytes, $decimals = 2) {
+  $sz = array('Bytes','kb','Mb','Gb','Tb','Pb');
+  $factor = floor((strlen($bytes) - 1) / 3);
+  return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
+}
+
+
+Public function IsIPValid($ip){
+ 
+    if (preg_match('/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/', $ip)){
+        return true;
+    }
+ 
+    return false;
+}
+
+
+Public function synthaxPHP($code){
+ 
+    // this matches --> "foobar" <--
+    $code = preg_replace(
+        '/"(.*?)"/U', 
+        '&quot;<span style="color: #007F00">$1</span>&quot;', $code
+    );
+ 
+    // hightlight functions and other structures like --> function foobar() <--- 
+    $code = preg_replace(
+        '/(\s)\b(.*?)((\b|\s)\()/U', 
+        '$1<span style="color: #0000ff">$2</span>$3', 
+        $code
+    );
+ 
+    // Match comments (like /* */): 
+    $code = preg_replace(
+        '/(\/\/)(.+)\s/', 
+        '<span style="color: #660066; background-color: #FFFCB1;"><i>$0</i></span>', 
+        $code
+    );
+ 
+    $code = preg_replace(
+        '/(\/\*.*?\*\/)/s', 
+        '<span style="color: #660066; background-color: #FFFCB1;"><i>$0</i></span>', 
+        $code
+    );
+ 
+    // hightlight braces:
+    $code = preg_replace('/(\(|\[|\{|\}|\]|\)|\->)/', '<strong>$1</strong>', $code);
+ 
+    // hightlight variables $foobar
+    $code = preg_replace(
+        '/(\$[a-zA-Z0-9_]+)/', '<span style="color: #0000B3">$1</span>', $code
+    );
+ 
+    /* The \b in the pattern indicates a word boundary, so only the distinct
+    ** word "web" is matched, and not a word partial like "webbing" or "cobweb" 
+    */
+ 
+    // special words and functions
+    $code = preg_replace(
+        '/\b(print|echo|new|function)\b/', 
+        '<span style="color: #7F007F">$1</span>', $code
+    );
+ 
+    return $code;
+}
 }
 
 ?>
