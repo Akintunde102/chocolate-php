@@ -1,8 +1,30 @@
-# chocolate-php
+# CHOCOLATE-PHP
 
-###### This project is to help php programmers have an easy time coding by having ready made functions for common and vital php operations
+**Name:** CHOCOLATE-PHP<br/>
+**Contributors:** Akintunde Jegede <br/>
+**TYPE:** LIBRARY
+**Programmed with:** PHP<br/>
+**Requires at least:** php 5.* <br/>
+**Major Dependency:** PHP<br/>
+**License:** APACHE LICENSE  2.0<br/>
+**License URI:** https://www.apache.org/licenses/LICENSE-2.0 <br/>
+**Composer Installation:** composer require akintunde102/chocolate- <br/>
 
-### Below is a list of codes that are present in this repository or folder
+# Short Summary:
+This project is to help php programmers have an easy time coding by having ready made functions for common and vital php operations.
+
+# Description:
+This library is meant to ask a got-to-library for vital php functions. It's a continous project that will always welcome mre functions to fulfil every "funtional" needs a php developer could need. At the moment, it has 2 classes and about 15 vital php functions.
+
+Below is a preview:
+![Preview](http://akin.com.ng/a.PNG)
+
+
+# Further Description:
+These script has two major classes:
+
+## Chocolate Class:
+This class contains generic functions that performs all kinds of vital operations. It houses majority of the functions which are listed below:
 
 #### shorten_words($string, $wordsreturned)
 
@@ -57,12 +79,23 @@ This is use to check if an ip is valid
 This simply highlights php code. The $code represents the codes passed as a string 
 
 
-
-#### Courier Class
-Below is an example of codes that can guide on how to use the courier the class
+Below is an example of codes that can guide on how to initiate and use chocolate as a class
 
 ````
-$courier = new courier(); 
+$a = new akintunde102\chocolatephp\chocolate;
+
+$string = 'All versions of PHP that support namespaces support three kinds of aliasing or importing: aliasing a class name, aliasing an interface name, and aliasing a namespace name. PHP 5.6+ also allows aliasing or importing function and constant names.';
+$wordsreturned = 20;
+
+$a->shorten_words($string, $wordsreturned); //Function example, You can use other functions in the class in the same way
+
+````
+
+## Courier Class
+This class is majorly for performing mail operations. Below is an example of codes that can guide on how to initiate and use the courier the class
+
+````
+$courier = new akintunde102\chocolatephp\courier;
 $courier->sender = 'Example.Com <no-reply@example.com>'; //sender's email	
 $courier->recipient = $to; //recipient's email
 $courier->subject = $title; //email title
@@ -72,15 +105,12 @@ if ($courier->send($courier)){echo 'Email sent';}; //then it gets sent
 ````
 
 
-With the above codes , use of the courier class is now clear.
-
-
-
-
 
 ### Installation
 
-You can simply install this file by using composer
+You can simply install this file by using composer. 
+
+If you don't know about composer, read about it (here)[https://getcomposer.org/doc/01-basic-usage.md]
 
 `composer require akintunde102/chocolate-php dev-master`
 
@@ -92,6 +122,7 @@ You can simply install this file by using composer
 <?php
 require_once 'vendor/autoload.php';
 
+//Initiating and Using the Chocolate Class
 $a = new akintunde102\chocolatephp\chocolate;
 
 $string = 'All versions of PHP that support namespaces support three kinds of aliasing or importing: aliasing a class name, aliasing an interface name, and aliasing a namespace name. PHP 5.6+ also allows aliasing or importing function and constant names.';
@@ -100,8 +131,82 @@ $wordsreturned = 20;
 
 $sh = $a->shorten_words($string, $wordsreturned);
 
-echo $sh;
+echo $sh; 
+
+//Initiating and Using the Courier Class
+$courier = new akintunde102\chocolatephp\courier;
+$courier->sender = 'Example.Com <no-reply@example.com>'; //sender's email	
+$courier->recipient = $to; //recipient's email
+$courier->subject = $title; //email title
+$courier->message_text = $courier_txt; //the text format of the email 
+$courier->message_html = $sentence['full_html'];	//the html format of the email 
+if ($courier->send($courier)){echo 'Email sent';}; //then it gets sent
+
+
 ?>
 ````
 
-The above example guides you on how to use the library after installation. You can test run this codes in the example folder which has just been recently added
+
+## Testing
+To test the libary before use, follow the steps below:
+1) Go to vendor\akintunde102\chocolate-php\example and copy the index.php
+2) Paste the index.php to main directory
+3) Then you can test the codes from your browser or command line as you may like
+
+                                       OR 
+1) Create a file in the main directory and name it (for instance,'test.html')
+2) Then copy the codes below into the file
+````php
+
+
+<?php
+require_once 'vendor/autoload.php';
+
+$a = new akintunde102\chocolatephp\chocolate;
+
+$string = 'All versions of PHP that support namespaces support three kinds of aliasing or importing: aliasing a class name, aliasing an interface name, and aliasing a namespace name. PHP 5.6+ also allows aliasing or importing function and constant names.';
+$wordsreturned = 20;
+
+$a->shorten_words($string, $wordsreturned);
+
+echo $a->checkPHP('errorfile');
+
+echo '<br/><br/>';
+
+
+echo $a->checkDomain('timiweb.com');
+
+echo $a->dirSize('vendor/');
+
+if ($a->IsIPValid('10.199.212.2')){echo 'IP is valid';}
+else {echo 'IP is invalid';}
+
+
+
+//Initiating and Using the Courier Class
+$courier = new akintunde102\chocolatephp\courier;
+$courier->sender = 'Example.Com <no-reply@example.com>'; //sender's email	
+$courier->recipient = $to; //recipient's email
+$courier->subject = $title; //email title
+$courier->message_text = $courier_txt; //the text format of the email 
+$courier->message_html = $sentence['full_html'];	//the html format of the email 
+if ($courier->send($courier)){echo 'Email sent';}; //then it gets sent
+
+
+?>
+````
+
+## Present Version
+1.1
+
+## Contact Me
+**Discord**: @akintunde <br/>
+**Email:** jegedeakintunde[at]gmail.com<br/>
+**utopian.io:** @akintunde <br/>
+**github:** @akintunde102<br/>
+
+
+
+
+ 
+
