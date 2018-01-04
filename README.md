@@ -104,7 +104,7 @@ if ($courier->send($courier)){echo 'Email sent';}; //then it gets sent
 
 ### Installation
 
-You can simply install this file by using composer. 
+You can simply install this library by using composer. 
 
 If you don't know about composer, read about it [here](https://getcomposer.org/doc/01-basic-usage.md)
 
