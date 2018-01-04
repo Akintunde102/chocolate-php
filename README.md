@@ -8,7 +8,7 @@
 **Major Dependency:** PHP<br/>
 **License:** APACHE LICENSE  2.0<br/>
 **License URI:** https://www.apache.org/licenses/LICENSE-2.0 <br/>
-**Composer Installation:** composer require akintunde102/chocolate- <br/>
+**Composer Installation:** composer require akintunde102/chocolate dev-master <br/>
 
 # Short Summary:
 This project is to help php programmers have an easy time coding by having ready made functions for common and vital php operations.
