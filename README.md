@@ -106,7 +106,7 @@ if ($courier->send($courier)){echo 'Email sent';}; //then it gets sent
 
 You can simply install this file by using composer. 
 
-If you don't know about composer, read about it (here)[https://getcomposer.org/doc/01-basic-usage.md]
+If you don't know about composer, read about it [here](https://getcomposer.org/doc/01-basic-usage.md)
 
 `composer require akintunde102/chocolate-php dev-master`
 
