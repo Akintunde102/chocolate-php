@@ -16,10 +16,6 @@ This project is to help php programmers have an easy time coding by having ready
 # Description:
 This library is meant to become a  got-to-library for vital php functions. It's a continous project that will always welcome more functions to fulfil every "functional" needs a php developer could need. At the moment, it has 2 classes and about 15 vital php functions.
 
-Below is a preview:
-![Preview](http://akin.com.ng/a.PNG)
-
-
 # Further Description:
 These script has two major classes:
 
