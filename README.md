@@ -14,7 +14,7 @@
 This project is to help php programmers have an easy time coding by having ready made functions for common and vital php operations.
 
 # Description:
-This library is meant to become a  got-to-library for vital php functions. It's a continous project that will always welcome more functions to fulfil every "functional" needs a php developer could need. At the moment, it has 2 classes and about 15 vital php functions.
+This library is meant to be a  go-to-library for vital php functions. It's a continous project that will always welcome more functions to fulfil every "functional" needs a php developer could need. At the moment, it has 2 classes and about 15 vital php functions.
 
 # Further Description:
 These script has two major classes:
